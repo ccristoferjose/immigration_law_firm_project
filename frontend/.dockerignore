@@ -1,0 +1,50 @@
+# ---------- Dependencies & build artifacts ----------
+node_modules
+dist
+build
+coverage
+.cache
+.vite
+.parcel-cache
+
+# ---------- Version control ----------
+.git
+.gitignore
+.gitattributes
+
+# ---------- Environment files / secrets ----------
+# Never bake local env into the image — values come in via build ARGs
+.env
+.env.*
+!.env.example
+
+# ---------- Editor / OS junk ----------
+.vscode
+.idea
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ---------- Logs ----------
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ---------- CI / test artifacts ----------
+.github
+.circleci
+coverage
+test-results
+playwright-report
+.nyc_output
+
+# ---------- Docker & docs (not needed inside the image) ----------
+Dockerfile
+.dockerignore
+README.md
+*.md
+LICENSE
