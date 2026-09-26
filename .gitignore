@@ -1,0 +1,10 @@
+# Secrets — never commit service-account keys or env files
+*firebase-adminsdk*.json
+.env
+.env.*
+!.env.example
+
+node_modules/
+.next/
+dist/
+.DS_Store
