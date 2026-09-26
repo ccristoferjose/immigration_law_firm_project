@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  html, body, #root {
+    height: 100%;
+  }
+  body {
+    -webkit-font-smoothing: antialiased;
+    background: #f8fafc;
+  }
+}
+
+@layer components {
+  .display-serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+}
