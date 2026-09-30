@@ -1,6 +1,7 @@
-export const locales = ['en', 'es'] as const;
+/** Spanish is the primary language (served at `/`); English lives under `/en`. */
+export const locales = ['es', 'en'] as const;
 export type Locale = (typeof locales)[number];
-export const defaultLocale: Locale = 'en';
+export const defaultLocale: Locale = 'es';
 
 /** Values for <html lang>, hreflang and Open Graph. */
 export const localeMeta: Record<Locale, { htmlLang: string; ogLocale: string; label: string }> = {

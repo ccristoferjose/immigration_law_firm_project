@@ -41,7 +41,7 @@ export function readFields(formData: FormData): ContactFields {
     fullName: get('fullName').slice(0, 120),
     email: get('email').slice(0, 200),
     phone: get('phone').slice(0, 30),
-    preferredLanguage: get('preferredLanguage') === 'es' ? 'es' : 'en',
+    preferredLanguage: get('preferredLanguage') === 'en' ? 'en' : 'es',
     matter: get('matter'),
     contactMethod: get('contactMethod') === 'phone' ? 'phone' : 'email',
     message: get('message'),

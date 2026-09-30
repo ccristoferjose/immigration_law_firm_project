@@ -13,9 +13,9 @@ export function Logo({ locale }: { locale: Locale }) {
     <Link href={pagePath('home', locale)} className="flex items-center gap-2 rounded-md">
       <span
         aria-hidden="true"
-        className="h-9 w-9 shrink-0 rounded-md bg-brand-700 text-white flex items-center justify-center font-serif text-lg font-semibold"
+        className="h-9 w-9 shrink-0 rounded-md bg-brand-900 text-accent-300 ring-1 ring-accent-400/60 flex items-center justify-center font-serif text-xl font-semibold"
       >
-        L
+        F
       </span>
       <span>
         <span className="block font-serif text-lg leading-tight text-brand-900">{site.name}</span>

@@ -1,7 +1,10 @@
 import type { MetadataRoute } from 'next';
-import { locales } from '@/lib/i18n';
+import { defaultLocale, locales } from '@/lib/i18n';
 import { noindexPages, pages, serviceIds, servicePath, type PageKey } from '@/lib/routes';
 import { absoluteUrl } from '@/lib/seo';
+
+// Generated once at build time (static export).
+export const dynamic = 'force-static';
 
 /** Public, indexable pages in both languages, each with hreflang alternates. */
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -16,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: absoluteUrl(pair[locale]),
       lastModified,
       alternates: {
-        languages: { en: absoluteUrl(pair.en), es: absoluteUrl(pair.es), 'x-default': absoluteUrl(pair.en) },
+        languages: { es: absoluteUrl(pair.es), en: absoluteUrl(pair.en), 'x-default': absoluteUrl(pair[defaultLocale]) },
       },
     }))
   );
