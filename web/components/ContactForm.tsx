@@ -1,7 +1,6 @@
 'use client';
 
-import { startTransition, useActionState, useState, type FormEvent } from 'react';
-import { submitContact, type ContactState } from '@/app/actions/contact';
+import { useState, type FormEvent } from 'react';
 import { buttonClasses } from '@/components/ui/button';
 import type { Dictionary } from '@/content/dictionaries';
 import { MESSAGE_MAX, readFields, validate, type ContactFields, type FieldErrors } from '@/lib/contact-schema';
@@ -19,10 +18,16 @@ const fieldOrder: (keyof ContactFields)[] = ['fullName', 'email', 'phone', 'matt
 const inputClass =
   'flex h-10 w-full rounded-md border border-border bg-white px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-1 aria-[invalid=true]:border-red-600';
 
+/**
+ * Contact form. The site is a static export (GitHub Pages), so there is no server to
+ * receive submissions yet: the form validates in the browser and, when valid, tells the
+ * visitor it is not connected and to call instead. To go live, send the validated
+ * FormData to a form endpoint in handleSubmit (and update the privacy policy).
+ */
 export default function ContactForm({ locale, labels, matters }: Props) {
-  const [state, formAction, pending] = useActionState<ContactState, FormData>(submitContact.bind(null, locale), {});
   const [clientErrors, setClientErrors] = useState<FieldErrors | null>(null);
-  const errors: FieldErrors = clientErrors ?? state.errors ?? {};
+  const [notConnected, setNotConnected] = useState(false);
+  const errors: FieldErrors = clientErrors ?? {};
   const hasErrors = Object.keys(errors).length > 0;
 
   function message(field: keyof ContactFields) {
@@ -30,21 +35,20 @@ export default function ContactForm({ locale, labels, matters }: Props) {
     return code ? labels.errors[code].replace('{max}', String(MESSAGE_MAX)) : undefined;
   }
 
-  // Validate in the browser first; submitting manually (instead of letting React
-  // handle the action) also prevents the form from being cleared on a server error.
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
     const found = validate(readFields(formData));
     if (Object.keys(found).length > 0) {
+      setNotConnected(false);
       setClientErrors(found);
       const first = fieldOrder.find((f) => found[f]);
       if (first) (form.elements.namedItem(first) as HTMLElement | null)?.focus();
       return;
     }
     setClientErrors(null);
-    startTransition(() => formAction(formData));
+    setNotConnected(true);
   }
 
   function fieldProps(field: keyof ContactFields, hintId?: string) {
@@ -70,7 +74,7 @@ export default function ContactForm({ locale, labels, matters }: Props) {
   );
 
   return (
-    <form action={formAction} onSubmit={handleSubmit} noValidate className="space-y-5">
+    <form onSubmit={handleSubmit} noValidate className="space-y-5">
       <div className="rounded-md border border-brand-200 bg-brand-50 p-4 text-sm text-brand-900">
         <p className="font-semibold">{labels.disclaimerTitle}</p>
         {labels.disclaimer.map((p) => (
@@ -83,10 +87,11 @@ export default function ContactForm({ locale, labels, matters }: Props) {
       <p className="text-sm text-muted-foreground">{labels.requiredNote}</p>
 
       <div role="alert" aria-live="assertive">
-        {(hasErrors || state.serverError || state.rateLimited) && (
-          <p className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
-            {hasErrors ? labels.errorSummary : state.rateLimited ? labels.errors.rateLimited : labels.errors.server}
-          </p>
+        {hasErrors && (
+          <p className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">{labels.errorSummary}</p>
+        )}
+        {!hasErrors && notConnected && (
+          <p className="rounded-md border border-accent-300 bg-accent-100 px-4 py-3 text-sm text-brand-900">{labels.notConnected}</p>
         )}
       </div>
 
@@ -197,8 +202,8 @@ export default function ContactForm({ locale, labels, matters }: Props) {
         </div>
       </div>
 
-      <button type="submit" disabled={pending} className={buttonClasses({ size: 'lg', className: 'w-full sm:w-auto' })}>
-        {pending ? labels.submitting : labels.submit}
+      <button type="submit" className={buttonClasses({ size: 'lg', className: 'w-full sm:w-auto' })}>
+        {labels.submit}
       </button>
     </form>
   );

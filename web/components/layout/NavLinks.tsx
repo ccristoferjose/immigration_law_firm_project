@@ -9,7 +9,9 @@ import { cn } from '@/lib/utils';
 
 export type NavItem = { href: string; label: string };
 
-function isActive(pathname: string, href: string, homeHref: string) {
+/** Compares paths ignoring the trailing slash added by the static export. */
+function isActive(rawPathname: string, href: string, homeHref: string) {
+  const pathname = rawPathname.length > 1 ? rawPathname.replace(/\/$/, '') : rawPathname;
   if (href === homeHref) return pathname === href;
   return pathname === href || pathname.startsWith(`${href}/`);
 }

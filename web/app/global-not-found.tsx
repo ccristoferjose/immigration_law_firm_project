@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { buttonClasses } from '@/components/ui/button';
+import { contentSecurityPolicy } from '@/lib/csp';
 import { cormorant, inter } from '@/lib/fonts';
 import { site } from '@/lib/site';
 
@@ -14,6 +15,9 @@ export const metadata: Metadata = {
 export default function GlobalNotFound() {
   return (
     <html lang="es" className={`${inter.variable} ${cormorant.variable}`}>
+      <head>
+        <meta httpEquiv="Content-Security-Policy" content={contentSecurityPolicy} />
+      </head>
       <body className="min-h-screen flex items-center justify-center bg-gradient-to-b from-sand-100 to-white font-sans">
         <main className="container max-w-xl py-20 text-center">
           <p className="font-serif text-6xl text-accent-500">404</p>

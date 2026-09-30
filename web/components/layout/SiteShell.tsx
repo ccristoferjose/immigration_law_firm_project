@@ -2,6 +2,7 @@ import '@/app/globals.css';
 import Analytics from '@/components/Analytics';
 import JsonLd from '@/components/JsonLd';
 import { getDictionary } from '@/content/dictionaries';
+import { contentSecurityPolicy } from '@/lib/csp';
 import { cormorant, inter } from '@/lib/fonts';
 import { localeMeta, type Locale } from '@/lib/i18n';
 import { legalServiceJsonLd } from '@/lib/structured-data';
@@ -17,6 +18,12 @@ export default function SiteShell({ locale, children }: { locale: Locale; childr
   const { nav } = getDictionary(locale);
   return (
     <html lang={localeMeta[locale].htmlLang} className={`${inter.variable} ${cormorant.variable}`}>
+      {/* App Router root layout: a plain <head> is valid here (the rule targets the Pages router).
+          The CSP meta tag must come early in <head> so it applies to everything after it. */}
+      {/* eslint-disable-next-line @next/next/no-head-element */}
+      <head>
+        <meta httpEquiv="Content-Security-Policy" content={contentSecurityPolicy} />
+      </head>
       <body className="min-h-screen flex flex-col font-sans text-foreground">
         <a
           href="#main"

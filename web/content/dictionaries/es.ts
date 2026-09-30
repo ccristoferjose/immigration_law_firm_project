@@ -298,7 +298,8 @@ const es: Dictionary = {
     consent:
       'Entiendo que enviar este formulario no crea una relación abogado-cliente y que no debo incluir información confidencial o altamente sensible.',
     submit: 'Enviar solicitud',
-    submitting: 'Enviando…',
+    notConnected:
+      'Este formulario es una demostración y todavía no envía mensajes. Para solicitar una consulta, llámenos al (213) 221-5099.',
     errorSummary: 'Por favor, corrija los campos señalados.',
     errors: {
       nameRequired: 'Por favor, escriba su nombre completo.',
@@ -309,8 +310,6 @@ const es: Dictionary = {
       matterRequired: 'Por favor, seleccione un asunto de inmigración.',
       messageTooLong: 'Por favor, escriba un mensaje de menos de {max} caracteres.',
       consentRequired: 'Por favor, confirme que leyó el aviso anterior.',
-      server: 'No pudimos enviar su solicitud. Inténtelo de nuevo o llámenos.',
-      rateLimited: 'Recibimos varias solicitudes desde su conexión. Espere unos minutos e inténtelo de nuevo, o llámenos al (213) 221-5099.',
     },
     disclaimerTitle: 'Aviso importante',
     disclaimer: [
