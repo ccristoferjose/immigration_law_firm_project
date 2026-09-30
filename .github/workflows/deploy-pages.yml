@@ -31,9 +31,9 @@ jobs:
       # Demo deployment: keep it out of search engines. Remove when the site goes live.
       NEXT_PUBLIC_NOINDEX: 'true'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 24
           cache: npm
