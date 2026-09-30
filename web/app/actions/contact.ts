@@ -1,11 +1,13 @@
 'use server';
 
+import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { readFields, validate, type FieldErrors } from '@/lib/contact-schema';
-import { locales, type Locale } from '@/lib/i18n';
+import { defaultLocale, locales, type Locale } from '@/lib/i18n';
+import { isRateLimited } from '@/lib/rate-limit';
 import { pagePath } from '@/lib/routes';
 
-export type ContactState = { errors?: FieldErrors; serverError?: boolean };
+export type ContactState = { errors?: FieldErrors; serverError?: boolean; rateLimited?: boolean };
 
 /**
  * Delivers a contact request.
@@ -45,10 +47,14 @@ async function deliver(payload: Record<string, string>): Promise<boolean> {
 }
 
 export async function submitContact(locale: Locale, _prev: ContactState, formData: FormData): Promise<ContactState> {
-  const safeLocale: Locale = locales.includes(locale) ? locale : 'en';
+  const safeLocale: Locale = locales.includes(locale) ? locale : defaultLocale;
 
   // Honeypot: real visitors never see or fill this field.
   if (String(formData.get('company') ?? '')) redirect(pagePath('thankYou', safeLocale));
+
+  const h = await headers();
+  const ip = h.get('x-forwarded-for')?.split(',')[0]?.trim() || h.get('x-real-ip') || 'unknown';
+  if (isRateLimited(ip)) return { rateLimited: true };
 
   const fields = readFields(formData);
   const errors = validate(fields);

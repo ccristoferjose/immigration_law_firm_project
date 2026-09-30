@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { CalendarCheck, Check, Clock, Languages, MessagesSquare, Quote, Shield, Video } from 'lucide-react';
-import { CtaBand, FaqList, OfficeInfo, ServiceCards } from '@/components/blocks';
+import { CalendarCheck, Check, Clock, Languages, MessagesSquare, Shield, Video } from 'lucide-react';
+import { FaqList, OfficeInfo, OfficeMap, ServiceCards } from '@/components/blocks';
 import { buttonClasses } from '@/components/ui/button';
 import { getDictionary } from '@/content/dictionaries';
 import type { Locale } from '@/lib/i18n';
@@ -20,7 +20,8 @@ function SectionHeading({ id, title, subtitle }: { id: string; title: string; su
       <h2 id={id} className="display-serif text-3xl md:text-4xl text-brand-900">
         {title}
       </h2>
-      {subtitle && <p className="mt-3 text-muted-foreground">{subtitle}</p>}
+      <span aria-hidden="true" className="accent-rule mx-auto mt-4" />
+      {subtitle && <p className="mt-4 text-muted-foreground">{subtitle}</p>}
     </div>
   );
 }
@@ -36,10 +37,10 @@ export default function HomePage({ locale }: { locale: Locale }) {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-brand-50 to-white">
+      <section className="relative overflow-hidden bg-gradient-to-b from-sand-100 to-sand-50">
         <div className="container grid md:grid-cols-2 gap-10 items-center py-16 md:py-24">
           <div>
-            <p className="inline-flex items-center gap-2 text-xs font-medium text-brand-700 bg-brand-100 rounded-full px-3 py-1 mb-5">
+            <p className="inline-flex items-center gap-2 text-xs font-medium text-accent-700 bg-accent-100 border border-accent-200 rounded-full px-3 py-1 mb-5">
               <Shield className="h-3.5 w-3.5" aria-hidden="true" /> {home.hero.badge}
             </p>
             <h1 className="display-serif text-4xl md:text-5xl lg:text-6xl text-brand-900 leading-tight">{site.name}</h1>
@@ -69,7 +70,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
               </li>
             </ul>
           </div>
-          <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-xl bg-brand-100">
+          <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-xl bg-brand-100 ring-1 ring-accent-200">
             <Image
               src={heroImg}
               alt={home.hero.imageAlt}
@@ -94,7 +95,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
               const Icon = trustIcons[i % trustIcons.length];
               return (
                 <li key={item.title} className="flex gap-3">
-                  <Icon className="h-6 w-6 shrink-0 text-brand-600" aria-hidden="true" />
+                  <Icon className="h-6 w-6 shrink-0 text-accent-600" aria-hidden="true" />
                   <div>
                     <p className="font-semibold text-brand-900">{item.title}</p>
                     <p className="text-sm text-muted-foreground">{item.body}</p>
@@ -128,7 +129,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
             />
           </div>
           <div>
-            <p className="text-sm font-medium uppercase tracking-wider text-brand-600">{home.attorney.eyebrow}</p>
+            <p className="text-sm font-medium uppercase tracking-wider text-accent-700">{home.attorney.eyebrow}</p>
             <h2 id="attorney-heading" className="mt-2 display-serif text-3xl md:text-4xl text-brand-900">
               {site.attorney.name ?? home.attorney.title}
             </h2>
@@ -160,7 +161,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
               <li key={step.title} className="rounded-lg border border-border bg-white p-6">
                 <span
                   aria-hidden="true"
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-700 font-serif text-lg font-semibold text-white"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-900 font-serif text-lg font-semibold text-accent-300"
                 >
                   {i + 1}
                 </span>
@@ -190,8 +191,8 @@ export default function HomePage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      {/* Space & team carousel + testimonials */}
-      <section aria-labelledby="gallery-heading" className="py-16 md:py-24 bg-brand-50">
+      {/* Commitment carousel (illustrative photos) */}
+      <section aria-labelledby="gallery-heading" className="py-16 md:py-24 bg-sand-100">
         <div className="container">
           <SectionHeading id="gallery-heading" title={home.gallery.title} subtitle={home.gallery.subtitle} />
           <Carousel
@@ -199,21 +200,6 @@ export default function HomePage({ locale }: { locale: Locale }) {
             labels={home.gallery}
           />
 
-          <h2 className="mt-16 mb-8 text-center display-serif text-3xl md:text-4xl text-brand-900">
-            {home.testimonials.title}
-          </h2>
-          <ul className="grid md:grid-cols-3 gap-6">
-            {home.testimonials.items.map((t) => (
-              <li key={t.name}>
-                <figure className="h-full rounded-lg bg-white p-6 border border-border">
-                  <Quote className="h-6 w-6 text-brand-300 mb-3" aria-hidden="true" />
-                  <blockquote className="text-brand-800 italic">&ldquo;{t.quote}&rdquo;</blockquote>
-                  <figcaption className="mt-3 text-sm font-semibold text-brand-900">— {t.name}</figcaption>
-                </figure>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-6 text-center text-xs text-muted-foreground">{home.testimonials.note}</p>
         </div>
       </section>
 
@@ -230,30 +216,28 @@ export default function HomePage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <CtaBand locale={locale} location="home-cta" />
-
       {/* Contact / office information */}
       <section aria-labelledby="contact-heading" className="py-16 md:py-24 bg-brand-900 text-white">
-        <div className="container grid md:grid-cols-2 gap-10">
+        <div className="container grid md:grid-cols-2 gap-10 lg:gap-16">
           <div>
             <h2 id="contact-heading" className="display-serif text-3xl md:text-4xl">
               {home.contact.title}
             </h2>
-            <p className="mt-3 text-brand-200">{home.contact.subtitle}</p>
+            <span aria-hidden="true" className="accent-rule mt-4" />
+            <p className="mt-4 text-brand-200">{home.contact.subtitle}</p>
             <div className="mt-8">
               <OfficeInfo locale={locale} tone="dark" />
             </div>
-          </div>
-          <div className="flex items-center justify-center">
             <Link
               href={contactHref}
               data-track="cta_click"
               data-track-location="home-contact"
-              className={buttonClasses({ variant: 'inverse', size: 'lg' })}
+              className={buttonClasses({ variant: 'inverse', size: 'lg', className: 'mt-10' })}
             >
               {home.cta.button}
             </Link>
           </div>
+          <OfficeMap locale={locale} tone="dark" />
         </div>
       </section>
     </>

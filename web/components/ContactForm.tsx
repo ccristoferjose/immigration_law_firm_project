@@ -83,9 +83,9 @@ export default function ContactForm({ locale, labels, matters }: Props) {
       <p className="text-sm text-muted-foreground">{labels.requiredNote}</p>
 
       <div role="alert" aria-live="assertive">
-        {(hasErrors || state.serverError) && (
+        {(hasErrors || state.serverError || state.rateLimited) && (
           <p className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
-            {state.serverError && !hasErrors ? labels.errors.server : labels.errorSummary}
+            {hasErrors ? labels.errorSummary : state.rateLimited ? labels.errors.rateLimited : labels.errors.server}
           </p>
         )}
       </div>
@@ -122,8 +122,8 @@ export default function ContactForm({ locale, labels, matters }: Props) {
             {labels.preferredLanguage}
           </label>
           <select id="preferredLanguage" name="preferredLanguage" defaultValue={locale} className={inputClass}>
-            <option value="en">{labels.languages.en}</option>
             <option value="es">{labels.languages.es}</option>
+            <option value="en">{labels.languages.en}</option>
           </select>
         </div>
 

@@ -1,7 +1,7 @@
 import type { Locale } from './i18n';
 import { pagePath } from './routes';
 import { absoluteUrl } from './seo';
-import { site } from './site';
+import { maps, site } from './site';
 
 /**
  * JSON-LD builders. Only factual details from lib/site.ts are published:
@@ -35,11 +35,13 @@ export function legalServiceJsonLd(locale: Locale) {
     logo: absoluteUrl('/icon.svg'),
     image: absoluteUrl('/images/og-default.jpg'),
     knowsLanguage: site.languages,
+    areaServed: site.serviceArea.schema,
     ...(verified
       ? {
           telephone: contact.phoneHref.replace('tel:', ''),
-          email: contact.email,
+          ...(contact.email ? { email: contact.email } : {}),
           openingHours: site.hours.schema,
+          hasMap: maps.googleDirections,
           address: {
             '@type': 'PostalAddress',
             streetAddress: contact.address.street,

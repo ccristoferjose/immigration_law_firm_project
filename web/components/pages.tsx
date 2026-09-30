@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Check, ExternalLink } from 'lucide-react';
-import { Breadcrumbs, CtaBand, DraftNotice, FaqList, OfficeInfo, PageHeader, ServiceCards } from '@/components/blocks';
+import { Breadcrumbs, DraftNotice, FaqList, OfficeInfo, OfficeMap, PageHeader, ServiceCards } from '@/components/blocks';
 import ContactForm from '@/components/ContactForm';
 import TrackOnMount from '@/components/TrackOnMount';
 import { buttonClasses } from '@/components/ui/button';
@@ -44,7 +44,6 @@ export function AboutView({ locale }: { locale: Locale }) {
           <Image src={attorneyImg} alt={d.home.attorney.imageAlt} fill placeholder="blur" sizes="(min-width: 1024px) 400px, 100vw" className="object-cover" />
         </div>
       </div>
-      <CtaBand locale={locale} location="about" />
     </>
   );
 }
@@ -66,7 +65,6 @@ export function ServicesIndexView({ locale }: { locale: Locale }) {
         <ServiceCards locale={locale} headingLevel={2} />
         <p className="mt-10 max-w-3xl text-sm text-muted-foreground">{d.common.noGuarantee}</p>
       </div>
-      <CtaBand locale={locale} location="services-index" />
     </>
   );
 }
@@ -130,7 +128,7 @@ export function ServiceView({ locale, slug }: { locale: Locale; slug: string }) 
                 <li key={step.title} className="flex gap-4">
                   <span
                     aria-hidden="true"
-                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-700 font-serif font-semibold text-white"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-900 font-serif font-semibold text-accent-300"
                   >
                     {i + 1}
                   </span>
@@ -172,7 +170,7 @@ export function ServiceView({ locale, slug }: { locale: Locale; slug: string }) 
         </aside>
       </div>
 
-      <section aria-labelledby="related" className="bg-brand-50 py-12 md:py-16">
+      <section aria-labelledby="related" className="bg-sand-100 py-12 md:py-16">
         <div className="container">
           <h2 id="related" className={`${h2} mb-8`}>
             {d.common.relatedServices}
@@ -181,7 +179,6 @@ export function ServiceView({ locale, slug }: { locale: Locale; slug: string }) 
         </div>
       </section>
 
-      <CtaBand locale={locale} location="service-page" />
     </>
   );
 }
@@ -250,7 +247,6 @@ export function ResourcesView({ locale }: { locale: Locale }) {
           </p>
         </div>
       </div>
-      <CtaBand locale={locale} location="resources" />
     </>
   );
 }
@@ -283,7 +279,6 @@ export function FaqView({ locale }: { locale: Locale }) {
           ))}
         </section>
       </div>
-      <CtaBand locale={locale} location="faq" />
     </>
   );
 }
@@ -313,6 +308,14 @@ export function ContactView({ locale }: { locale: Locale }) {
           </div>
         </section>
       </div>
+      <section aria-labelledby="map-heading" className="border-t border-border bg-white">
+        <div className="container py-12 md:py-16">
+          <h2 id="map-heading" className={`${h2} mb-6`}>
+            {d.contactPage.mapHeading}
+          </h2>
+          <OfficeMap locale={locale} />
+        </div>
+      </section>
     </>
   );
 }

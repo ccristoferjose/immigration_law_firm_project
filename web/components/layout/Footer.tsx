@@ -3,12 +3,12 @@ import { getDictionary } from '@/content/dictionaries';
 import { services } from '@/content/services';
 import type { Locale } from '@/lib/i18n';
 import { pagePath, servicePath } from '@/lib/routes';
-import { formattedAddress, site } from '@/lib/site';
+import { formattedAddress, maps, site } from '@/lib/site';
 
 function FooterList({ heading, links }: { heading: string; links: { href: string; label: string }[] }) {
   return (
     <div>
-      <h2 className="text-sm font-semibold uppercase tracking-wider text-white">{heading}</h2>
+      <h2 className="text-sm font-semibold uppercase tracking-wider text-accent-300">{heading}</h2>
       <ul className="mt-4 space-y-2">
         {links.map((l) => (
           <li key={l.href}>
@@ -54,7 +54,7 @@ export default function Footer({ locale }: { locale: Locale }) {
           ]}
         />
         <div>
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-white">{footer.contactHeading}</h2>
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-accent-300">{footer.contactHeading}</h2>
           <address className="mt-4 not-italic space-y-2">
             <p>
               <a
@@ -66,17 +66,32 @@ export default function Footer({ locale }: { locale: Locale }) {
                 {site.contact.phoneDisplay}
               </a>
             </p>
+            {site.contact.email && (
+              <p>
+                <a
+                  href={`mailto:${site.contact.email}`}
+                  data-track="email_click"
+                  data-track-location="footer"
+                  className="rounded hover:text-white hover:underline underline-offset-4"
+                >
+                  {site.contact.email}
+                </a>
+              </p>
+            )}
             <p>
               <a
-                href={`mailto:${site.contact.email}`}
-                data-track="email_click"
+                href={maps.googleDirections}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-track="directions_click"
                 data-track-location="footer"
                 className="rounded hover:text-white hover:underline underline-offset-4"
               >
-                {site.contact.email}
+                {formattedAddress()}
+                <span className="sr-only"> — {common.getDirections} {common.opensNewTab}</span>
               </a>
             </p>
-            <p>{formattedAddress()}</p>
+            <p>{site.serviceArea[locale]}</p>
             <p>
               <span className="sr-only">{common.officeHours}: </span>
               {site.hours[locale]}
@@ -85,7 +100,7 @@ export default function Footer({ locale }: { locale: Locale }) {
         </div>
       </div>
 
-      <div className="border-t border-brand-800">
+      <div className="border-t border-brand-800/80">
         <div className="container py-6 space-y-3 text-xs text-brand-300">
           <p>
             <strong className="text-brand-100">{footer.attorneyAdvertising}</strong> {footer.notice}
