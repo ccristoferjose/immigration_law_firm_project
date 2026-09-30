@@ -3,6 +3,9 @@ import { defaultLocale, locales } from '@/lib/i18n';
 import { noindexPages, pages, serviceIds, servicePath, type PageKey } from '@/lib/routes';
 import { absoluteUrl } from '@/lib/seo';
 
+// Generated once at build time (static export).
+export const dynamic = 'force-static';
+
 /** Public, indexable pages in both languages, each with hreflang alternates. */
 export default function sitemap(): MetadataRoute.Sitemap {
   const pairs = [

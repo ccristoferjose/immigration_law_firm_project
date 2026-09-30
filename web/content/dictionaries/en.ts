@@ -299,7 +299,8 @@ const en = {
     consent:
       'I understand that submitting this form does not create an attorney-client relationship and that I should not include confidential or highly sensitive information.',
     submit: 'Send request',
-    submitting: 'Sending…',
+    notConnected:
+      'This form is a demo and does not send messages yet. To request a consultation, please call us at (213) 221-5099.',
     errorSummary: 'Please correct the highlighted fields.',
     errors: {
       nameRequired: 'Please enter your full name.',
@@ -310,8 +311,6 @@ const en = {
       matterRequired: 'Please select an immigration matter.',
       messageTooLong: 'Please keep your message under {max} characters.',
       consentRequired: 'Please confirm that you have read the notice above.',
-      server: 'We could not send your request. Please try again or call us.',
-      rateLimited: 'We received several requests from your connection. Please wait a few minutes and try again, or call us at (213) 221-5099.',
     },
     disclaimerTitle: 'Important notice',
     /* TODO(attorney): review and finalize this wording. */

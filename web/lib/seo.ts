@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import { defaultLocale, localeMeta, otherLocale, type Locale } from './i18n';
 import { site, siteUrl } from './site';
 
+/** Set NEXT_PUBLIC_NOINDEX=true for demo/preview deployments that must stay out of search engines. */
+const noindexSite = process.env.NEXT_PUBLIC_NOINDEX === 'true';
+
 type PageMetaInput = {
   locale: Locale;
   title: string;
@@ -47,13 +50,14 @@ export function pageMetadata({ locale, title, description, paths, noindex, absol
       description,
       images: ['/images/og-default.jpg'],
     },
-    robots: noindex ? { index: false, follow: false } : undefined,
+    robots: noindex || noindexSite ? { index: false, follow: false } : undefined,
   };
 }
 
 /** Metadata shared by every page in a locale's root layout. */
 export function rootMetadata(locale: Locale): Metadata {
   return {
+    ...(noindexSite ? { robots: { index: false, follow: false } } : {}),
     metadataBase: new URL(siteUrl),
     title: { template: `%s | ${site.name}`, default: site.name },
     description: site.tagline[locale],
