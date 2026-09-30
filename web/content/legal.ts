@@ -8,10 +8,9 @@
  * including confirming compliance with the attorney advertising and ethics rules
  * of each jurisdiction where the attorney is licensed.
  *
- * Replace EVERY bracketed placeholder — e.g. [State], [Attorney name],
- * [effective date], [date of last review], [analytics provider],
- * [hosting provider], [form delivery provider] — with accurate information,
- * or remove the sentence if it does not apply.
+ * Keep these documents in sync with what the site actually does (form delivery,
+ * Google Analytics, Google Maps embed). Update the effective / last-reviewed dates
+ * whenever the content changes.
  * ============================================================================
  */
 import type { Locale } from '@/lib/i18n';
@@ -29,7 +28,7 @@ export const legalDocs: Record<LegalDocId, Record<Locale, LegalDoc>> = {
       metaDescription:
         "Learn what information our immigration law firm collects through this website, how we use it to respond to you, and how we protect it. We never sell your data.",
       intro:
-        "This Privacy Policy explains what information the Firm collects when you visit this website or submit the contact form, how that information is used, and the choices you have. Effective date: [effective date].",
+        "This Privacy Policy explains what information the Firm collects when you visit this website or submit the contact form, how that information is used, and the choices you have. Effective date: September 29, 2026.",
       sections: [
         {
           heading: "Information we collect",
@@ -53,16 +52,29 @@ export const legalDocs: Record<LegalDocId, Record<Locale, LegalDoc>> = {
           ],
         },
         {
+          heading: "Maps, cookies and third-party tracking",
+          paragraphs: [
+            "Our home and contact pages include an embedded Google Maps map so you can find our office. When the map loads, Google receives technical information such as your IP address and may set cookies, under Google's own privacy policy. You can use the directions links or our written address instead.",
+            "If Google Analytics is enabled, it uses cookies to measure visits, including which pages are viewed. We have turned off Google's advertising and cross-device (Google signals) features, and we do not use advertising pixels, session recording or heatmaps. Other than Google, we do not allow third parties to collect personal information about your online activities over time and across websites through this site.",
+          ],
+        },
+        {
+          heading: "Do Not Track signals",
+          paragraphs: [
+            "Some browsers send a \"Do Not Track\" signal. Because there is no common industry standard for these signals, this website does not currently respond to them differently. You can still block or delete cookies in your browser settings.",
+          ],
+        },
+        {
           heading: "Service providers",
           paragraphs: [
-            "We rely on a small number of third-party service providers to operate this website, such as our website hosting provider ([hosting provider]), the service that delivers contact form messages to the Firm ([form delivery provider]) and, if enabled, an analytics provider ([analytics provider]).",
+            "We rely on a small number of third-party service providers to operate this website: our website hosting provider, the service that delivers contact form messages to the Firm, Google Maps (for the office map) and, if enabled, Google Analytics.",
             "These providers may process your information only as needed to provide their services to the Firm and are not permitted to use it for their own marketing.",
           ],
         },
         {
           heading: "Retention and security",
           paragraphs: [
-            "We keep contact form submissions only as long as reasonably necessary to respond to your inquiry, manage any resulting representation, and meet our legal and professional obligations. [Insert retention period, if the Firm has one.]",
+            "We keep contact form submissions only as long as reasonably necessary to respond to your inquiry, manage any resulting representation, and meet our legal and professional obligations.",
             "We use reasonable administrative and technical safeguards, including encrypted (HTTPS) connections, to protect your information. However, no method of transmission over the internet is completely secure. Please do not send confidential or highly sensitive information through the contact form.",
           ],
         },
@@ -82,7 +94,7 @@ export const legalDocs: Record<LegalDocId, Record<Locale, LegalDoc>> = {
         {
           heading: "Contact us",
           paragraphs: [
-            "If you have questions about this Privacy Policy or want to make a request about your information, please contact the Firm using the phone number or email address listed on our Contact page.",
+            "If you have questions about this Privacy Policy or want to make a request about your information, please call the Firm at (213) 221-5099, use the form on our Contact page, or write to us at 5800 S Eastern Ave, Suite 500, Commerce, CA 90040.",
           ],
         },
         {
@@ -98,7 +110,7 @@ export const legalDocs: Record<LegalDocId, Record<Locale, LegalDoc>> = {
       metaDescription:
         "Conozca qué información recopila nuestra firma de inmigración en este sitio web, cómo la usamos para responderle y cómo la protegemos. Nunca vendemos sus datos.",
       intro:
-        "Esta Política de privacidad explica qué información recopila la Firma cuando usted visita este sitio web o envía el formulario de contacto, cómo se utiliza esa información y qué opciones tiene usted. Fecha de vigencia: [fecha de vigencia].",
+        "Esta Política de privacidad explica qué información recopila la Firma cuando usted visita este sitio web o envía el formulario de contacto, cómo se utiliza esa información y qué opciones tiene usted. Fecha de vigencia: 29 de septiembre de 2026.",
       sections: [
         {
           heading: "Información que recopilamos",
@@ -122,16 +134,29 @@ export const legalDocs: Record<LegalDocId, Record<Locale, LegalDoc>> = {
           ],
         },
         {
+          heading: "Mapas, cookies y rastreo de terceros",
+          paragraphs: [
+            "Nuestras páginas de inicio y de contacto incluyen un mapa de Google Maps para ayudarle a encontrar nuestra oficina. Cuando el mapa se carga, Google recibe información técnica, como su dirección IP, y puede instalar cookies, conforme a su propia política de privacidad. En su lugar, puede usar los enlaces de indicaciones o nuestra dirección escrita.",
+            "Si Google Analytics está activado, utiliza cookies para medir las visitas, incluidas las páginas que se consultan. Hemos desactivado las funciones publicitarias y de seguimiento entre dispositivos de Google (Google signals), y no usamos píxeles publicitarios, grabación de sesiones ni mapas de calor. Aparte de Google, no permitimos que terceros recopilen información personal sobre sus actividades en línea a lo largo del tiempo y en distintos sitios web a través de este sitio.",
+          ],
+        },
+        {
+          heading: "Señales de «No rastrear» (Do Not Track)",
+          paragraphs: [
+            "Algunos navegadores envían una señal de «No rastrear». Como no existe un estándar común para estas señales, este sitio web actualmente no responde a ellas de manera diferente. Aun así, puede bloquear o eliminar cookies en la configuración de su navegador.",
+          ],
+        },
+        {
           heading: "Proveedores de servicios",
           paragraphs: [
-            "Trabajamos con un número reducido de proveedores externos para operar este sitio web, como nuestro proveedor de alojamiento web ([proveedor de alojamiento]), el servicio que entrega a la Firma los mensajes del formulario de contacto ([proveedor de envío de formularios]) y, si está activado, un proveedor de análisis ([proveedor de análisis]).",
+            "Trabajamos con un número reducido de proveedores externos para operar este sitio web: nuestro proveedor de alojamiento web, el servicio que entrega a la Firma los mensajes del formulario de contacto, Google Maps (para el mapa de la oficina) y, si está activado, Google Analytics.",
             "Estos proveedores solo pueden procesar su información en la medida necesaria para prestar sus servicios a la Firma y no pueden usarla para su propio mercadeo.",
           ],
         },
         {
           heading: "Conservación y seguridad",
           paragraphs: [
-            "Conservamos los mensajes del formulario de contacto solo durante el tiempo razonablemente necesario para responder a su consulta, gestionar cualquier representación que resulte de ella y cumplir con nuestras obligaciones legales y profesionales. [Indique el plazo de conservación, si la Firma tiene uno.]",
+            "Conservamos los mensajes del formulario de contacto solo durante el tiempo razonablemente necesario para responder a su consulta, gestionar cualquier representación que resulte de ella y cumplir con nuestras obligaciones legales y profesionales.",
             "Aplicamos medidas administrativas y técnicas razonables, incluidas conexiones cifradas (HTTPS), para proteger su información. Sin embargo, ningún método de transmisión por internet es completamente seguro. Por favor, no envíe información confidencial o muy delicada a través del formulario de contacto.",
           ],
         },
@@ -151,7 +176,7 @@ export const legalDocs: Record<LegalDocId, Record<Locale, LegalDoc>> = {
         {
           heading: "Contáctenos",
           paragraphs: [
-            "Si tiene preguntas sobre esta Política de privacidad o desea hacer una solicitud sobre su información, comuníquese con la Firma al teléfono o correo electrónico que aparecen en nuestra página de Contacto.",
+            "Si tiene preguntas sobre esta Política de privacidad o desea hacer una solicitud sobre su información, llame a la Firma al (213) 221-5099, use el formulario de nuestra página de Contacto o escríbanos a 5800 S Eastern Ave, Suite 500, Commerce, CA 90040.",
           ],
         },
         {
@@ -173,7 +198,7 @@ export const legalDocs: Record<LegalDocId, Record<Locale, LegalDoc>> = {
       metaDescription:
         "Read the terms that govern your use of this immigration law firm website, including that its content is general information and not legal advice for your case.",
       intro:
-        "These Terms of Use apply to your use of this website. By accessing or using the site, you agree to these terms. If you do not agree, please do not use the site. Effective date: [effective date].",
+        "These Terms of Use apply to your use of this website. By accessing or using the site, you agree to these terms. If you do not agree, please do not use the site. Effective date: September 29, 2026.",
       sections: [
         {
           heading: "Informational purposes only",
@@ -221,7 +246,7 @@ export const legalDocs: Record<LegalDocId, Record<Locale, LegalDoc>> = {
         {
           heading: "Governing law",
           paragraphs: [
-            "These Terms of Use are governed by the laws of the State of [State], without regard to its conflict-of-law rules, and by applicable federal law.",
+            "These Terms of Use are governed by the laws of the State of California, without regard to its conflict-of-law rules, and by applicable federal law.",
           ],
         },
         {
@@ -237,7 +262,7 @@ export const legalDocs: Record<LegalDocId, Record<Locale, LegalDoc>> = {
       metaDescription:
         "Lea los términos que rigen el uso de este sitio web de nuestra firma de inmigración, incluido que su contenido es información general y no asesoría legal.",
       intro:
-        "Estos Términos de uso se aplican al uso que usted haga de este sitio web. Al acceder al sitio o utilizarlo, usted acepta estos términos. Si no está de acuerdo, por favor no utilice el sitio. Fecha de vigencia: [fecha de vigencia].",
+        "Estos Términos de uso se aplican al uso que usted haga de este sitio web. Al acceder al sitio o utilizarlo, usted acepta estos términos. Si no está de acuerdo, por favor no utilice el sitio. Fecha de vigencia: 29 de septiembre de 2026.",
       sections: [
         {
           heading: "Solo con fines informativos",
@@ -285,7 +310,7 @@ export const legalDocs: Record<LegalDocId, Record<Locale, LegalDoc>> = {
         {
           heading: "Ley aplicable",
           paragraphs: [
-            "Estos Términos de uso se rigen por las leyes del Estado de [Estado], sin tener en cuenta sus normas sobre conflicto de leyes, y por la legislación federal aplicable.",
+            "Estos Términos de uso se rigen por las leyes del Estado de California, sin tener en cuenta sus normas sobre conflicto de leyes, y por la legislación federal aplicable.",
           ],
         },
         {
@@ -343,7 +368,7 @@ export const legalDocs: Record<LegalDocId, Record<Locale, LegalDoc>> = {
         {
           heading: "Jurisdiction and bar admission",
           paragraphs: [
-            "[Attorney name] is licensed to practice law in [State]. Immigration law is federal, which allows an immigration attorney to represent clients in immigration matters before federal agencies and immigration courts regardless of the state where the client lives. The Firm does not provide advice on matters of state law outside the jurisdiction(s) where its attorneys are licensed.",
+            "The Firm's attorney is licensed to practice law in California by the State Bar of California. Immigration law is federal, which allows an immigration attorney to represent clients in immigration matters before federal agencies and immigration courts regardless of the state where the client lives. The Firm does not provide advice on matters of state law outside the jurisdiction(s) where its attorneys are licensed.",
           ],
         },
         {
@@ -395,7 +420,7 @@ export const legalDocs: Record<LegalDocId, Record<Locale, LegalDoc>> = {
         {
           heading: "Jurisdicción y licencia para ejercer",
           paragraphs: [
-            "[Nombre del abogado] tiene licencia para ejercer la abogacía en [Estado]. Las leyes de inmigración son federales, lo que permite a un abogado de inmigración representar a clientes en asuntos migratorios ante agencias federales y tribunales de inmigración sin importar el estado donde viva el cliente. La Firma no brinda asesoría sobre asuntos de derecho estatal fuera de la(s) jurisdicción(es) donde sus abogados tienen licencia.",
+            "La abogada de la Firma tiene licencia para ejercer la abogacía en California, otorgada por el Colegio de Abogados de California (State Bar of California). Las leyes de inmigración son federales, lo que permite a un abogado de inmigración representar a clientes en asuntos migratorios ante agencias federales y tribunales de inmigración sin importar el estado donde viva el cliente. La Firma no brinda asesoría sobre asuntos de derecho estatal fuera de la(s) jurisdicción(es) donde sus abogados tienen licencia.",
           ],
         },
         {
@@ -441,20 +466,20 @@ export const legalDocs: Record<LegalDocId, Record<Locale, LegalDoc>> = {
         {
           heading: "Known limitations",
           paragraphs: [
-            "Despite our efforts, some content may not yet be fully accessible. For example, some documents or content provided by third parties, such as linked government websites or embedded services, may not meet the same standards. [List any specific known issues here.]",
+            "Despite our efforts, some content may not yet be fully accessible. For example, some documents or content provided by third parties, such as linked government websites or embedded services, may not meet the same standards. The embedded Google Maps map on our home and contact pages is provided by Google and may not be fully accessible; our address is always shown as text, with direct links to directions in Google Maps, Apple Maps and Waze.",
           ],
         },
         {
           heading: "Feedback and assistance",
           paragraphs: [
-            "If you have difficulty using any part of this website, or if you need information in a different format, please let us know. You can call us at [phone number] or email us at [email address]; these details are also listed on our Contact page.",
+            "If you have difficulty using any part of this website, or if you need information in a different format, please let us know. You can call us at (213) 221-5099 or send us a message through the form on our Contact page, and we will work with you to provide the information in an accessible way.",
             "Please describe the page and the problem you experienced. We will do our best to respond promptly and to provide the information you need in an accessible way.",
           ],
         },
         {
           heading: "Review of this statement",
           paragraphs: [
-            "This statement was last reviewed on [date of last review].",
+            "This statement was last reviewed on September 29, 2026.",
           ],
         },
       ],
@@ -488,20 +513,20 @@ export const legalDocs: Record<LegalDocId, Record<Locale, LegalDoc>> = {
         {
           heading: "Limitaciones conocidas",
           paragraphs: [
-            "A pesar de nuestros esfuerzos, es posible que parte del contenido aún no sea completamente accesible. Por ejemplo, algunos documentos o contenidos de terceros, como sitios web del gobierno enlazados o servicios integrados, podrían no cumplir con los mismos estándares. [Indique aquí cualquier problema específico conocido.]",
+            "A pesar de nuestros esfuerzos, es posible que parte del contenido aún no sea completamente accesible. Por ejemplo, algunos documentos o contenidos de terceros, como sitios web del gobierno enlazados o servicios integrados, podrían no cumplir con los mismos estándares. El mapa de Google Maps integrado en nuestras páginas de inicio y de contacto lo proporciona Google y podría no ser completamente accesible; nuestra dirección siempre aparece como texto, con enlaces directos a indicaciones en Google Maps, Apple Maps y Waze.",
           ],
         },
         {
           heading: "Comentarios y asistencia",
           paragraphs: [
-            "Si tiene dificultades para usar cualquier parte de este sitio web o necesita información en otro formato, por favor avísenos. Puede llamarnos al [número de teléfono] o escribirnos a [correo electrónico]; estos datos también aparecen en nuestra página de Contacto.",
+            "Si tiene dificultades para usar cualquier parte de este sitio web o necesita información en otro formato, por favor avísenos. Puede llamarnos al (213) 221-5099 o enviarnos un mensaje mediante el formulario de nuestra página de Contacto, y buscaremos la manera de ofrecerle la información en un formato accesible.",
             "Describa la página y el problema que encontró. Haremos todo lo posible por responderle con prontitud y brindarle la información que necesita de forma accesible.",
           ],
         },
         {
           heading: "Revisión de esta declaración",
           paragraphs: [
-            "Esta declaración se revisó por última vez el [fecha de la última revisión].",
+            "Esta declaración se revisó por última vez el 29 de septiembre de 2026.",
           ],
         },
       ],

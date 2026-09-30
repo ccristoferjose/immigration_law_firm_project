@@ -6,17 +6,17 @@ import type { Locale } from './i18n';
  * This file is imported by client components, so keep it free of heavy content.
  */
 export const pages = {
-  home: { en: '/', es: '/es' },
-  about: { en: '/about', es: '/es/sobre-nosotros' },
-  services: { en: '/immigration-services', es: '/es/servicios-de-inmigracion' },
-  resources: { en: '/resources', es: '/es/recursos' },
-  faq: { en: '/faq', es: '/es/preguntas-frecuentes' },
-  contact: { en: '/contact', es: '/es/contacto' },
-  thankYou: { en: '/thank-you', es: '/es/gracias' },
-  privacy: { en: '/privacy-policy', es: '/es/politica-de-privacidad' },
-  terms: { en: '/terms-of-use', es: '/es/terminos-de-uso' },
-  disclaimer: { en: '/legal-disclaimer', es: '/es/aviso-legal' },
-  accessibility: { en: '/accessibility', es: '/es/accesibilidad' },
+  home: { en: '/en', es: '/' },
+  about: { en: '/en/about', es: '/sobre-nosotros' },
+  services: { en: '/en/immigration-services', es: '/servicios-de-inmigracion' },
+  resources: { en: '/en/resources', es: '/recursos' },
+  faq: { en: '/en/faq', es: '/preguntas-frecuentes' },
+  contact: { en: '/en/contact', es: '/contacto' },
+  thankYou: { en: '/en/thank-you', es: '/gracias' },
+  privacy: { en: '/en/privacy-policy', es: '/politica-de-privacidad' },
+  terms: { en: '/en/terms-of-use', es: '/terminos-de-uso' },
+  disclaimer: { en: '/en/legal-disclaimer', es: '/aviso-legal' },
+  accessibility: { en: '/en/accessibility', es: '/accesibilidad' },
 } as const satisfies Record<string, Record<Locale, string>>;
 
 export type PageKey = keyof typeof pages;

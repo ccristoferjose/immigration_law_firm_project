@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { GA_ID, track, type AnalyticsEvent } from '@/lib/analytics';
 import type { Locale } from '@/lib/i18n';
 
-const allowedEvents: AnalyticsEvent[] = ['cta_click', 'phone_click', 'email_click', 'language_select'];
+const allowedEvents: AnalyticsEvent[] = ['cta_click', 'phone_click', 'email_click', 'language_select', 'directions_click'];
 
 /**
  * Loads Google Analytics only when NEXT_PUBLIC_GA_ID is set, and tracks clicks on

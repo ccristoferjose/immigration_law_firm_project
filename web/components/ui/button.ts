@@ -4,7 +4,7 @@ const base =
   'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none';
 
 const variants = {
-  default: 'bg-brand-700 text-white hover:bg-brand-800',
+  default: 'bg-brand-900 text-white hover:bg-brand-800',
   secondary: 'bg-brand-50 text-brand-800 hover:bg-brand-100',
   outline: 'border border-brand-200 bg-white hover:bg-brand-50 text-brand-800',
   ghost: 'hover:bg-brand-50 text-brand-800',

@@ -10,7 +10,8 @@ export type AnalyticsEvent =
   | 'phone_click'
   | 'email_click'
   | 'form_submit'
-  | 'language_select';
+  | 'language_select'
+  | 'directions_click';
 
 export type AnalyticsParams = {
   /** Where on the page the interaction happened, e.g. 'header', 'hero', 'footer'. */

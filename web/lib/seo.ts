@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import { localeMeta, otherLocale, type Locale } from './i18n';
+import { defaultLocale, localeMeta, otherLocale, type Locale } from './i18n';
 import { site, siteUrl } from './site';
 
 type PageMetaInput = {
   locale: Locale;
   title: string;
   description: string;
-  /** Localized paths for this page, e.g. { en: '/about', es: '/es/sobre-nosotros' }. */
+  /** Localized paths for this page, e.g. { en: '/en/about', es: '/sobre-nosotros' }. */
   paths: Record<Locale, string>;
   noindex?: boolean;
   /** Set for the home page so the title isn't suffixed with the firm name twice. */
@@ -15,7 +15,7 @@ type PageMetaInput = {
 
 /**
  * Builds unique per-page metadata: title, description, self-referencing canonical,
- * hreflang alternates (en, es, x-default), Open Graph and Twitter cards.
+ * hreflang alternates (es, en, x-default → Spanish), Open Graph and Twitter cards.
  * Relative URLs are resolved against `metadataBase` (the production domain).
  */
 export function pageMetadata({ locale, title, description, paths, noindex, absoluteTitle }: PageMetaInput): Metadata {
@@ -29,7 +29,7 @@ export function pageMetadata({ locale, title, description, paths, noindex, absol
       ? undefined
       : {
           canonical: url,
-          languages: { en: paths.en, es: paths.es, 'x-default': paths.en },
+          languages: { es: paths.es, en: paths.en, 'x-default': paths[defaultLocale] },
         },
     openGraph: {
       type: 'website',

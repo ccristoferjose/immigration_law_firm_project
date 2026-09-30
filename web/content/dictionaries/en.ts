@@ -5,14 +5,14 @@
 const en = {
   meta: {
     home: {
-      title: 'Immigration Lawyer | English & Spanish',
+      title: 'Immigration Attorney in Commerce, CA | Los Angeles Area',
       description:
-        'Bilingual immigration legal services for families and individuals: green cards, citizenship, visas, work permits, removal defense and more.',
+        'Immigration legal services in Spanish and English for families across the Los Angeles area: green cards, citizenship, visas, work permits and removal defense.',
     },
     about: {
-      title: 'About Our Immigration Law Office',
+      title: 'About Our Immigration Law Firm',
       description:
-        'Learn about our immigration law office, our attorney, and how we support clients in English and Spanish, in person or by video.',
+        'Learn about our immigration law firm in Commerce, CA, our attorney, and how we support clients in Spanish and English, in person or by video.',
     },
     services: {
       title: 'Immigration Services',
@@ -32,7 +32,7 @@ const en = {
     contact: {
       title: 'Contact Us & Schedule a Consultation',
       description:
-        'Contact our immigration law office by phone, email, or our simple online form to request a consultation in English or Spanish.',
+        'Call (213) 221-5099, use our online form, or visit us in Commerce, CA, to request an immigration consultation in Spanish or English.',
     },
     thankYou: {
       title: 'Thank You',
@@ -57,7 +57,7 @@ const en = {
   },
 
   common: {
-    attorneysAtLaw: 'Attorneys at Law',
+    attorneysAtLaw: 'Immigration Law',
     learnMore: 'Learn more',
     learnMoreAbout: 'Learn more about',
     scheduleConsultation: 'Schedule a Consultation',
@@ -78,11 +78,20 @@ const en = {
       'Every case is different. This page provides general information, not legal advice, and no particular outcome can be guaranteed.',
     draftNotice:
       'Draft — this page is pending review by the attorney and may change.',
+    servicesCarousel: {
+      list: 'Choose a service',
+      previous: 'Previous service',
+      next: 'Next service',
+      position: 'Service {n} of {total}',
+    },
+    mapTitle: 'Map showing our office location in Commerce, CA',
+    getDirections: 'Get directions',
+    opensNewTab: '(opens in a new tab)',
   },
 
   home: {
     hero: {
-      badge: 'Trusted immigration counsel',
+      badge: 'Licensed in California since 2010',
       primaryCta: 'Schedule a Consultation',
       secondaryCta: 'Our Services',
       confidential: 'Confidential consultations',
@@ -91,8 +100,8 @@ const en = {
     trust: {
       heading: 'Why clients reach out to us',
       items: [
-        { title: 'English & Español', body: 'Speak with us in the language you are most comfortable with.' },
-        { title: 'Confidential consultations', body: 'Your situation is discussed privately and respectfully.' },
+        { title: 'Se habla español', body: 'Our attorney and our staff speak Spanish. We also serve clients in English.' },
+        { title: '15+ years licensed', body: 'Active license with the State Bar of California since 2010.' },
         { title: 'In person or by video', body: 'Meet at our office or from home by video call.' },
         { title: 'Clear next steps', body: 'We explain your options in plain language.' },
       ],
@@ -104,25 +113,24 @@ const en = {
     attorney: {
       eyebrow: 'Meet your attorney',
       title: 'Personal attention for every case',
-      /* TODO(attorney): replace with the attorney's real biography, bar admissions and education. */
       bio: [
-        'Our office helps individuals and families navigate complex immigration matters with compassion, precision and tenacity. Every case is treated with the personal attention it deserves.',
-        '[Attorney biography pending — to be provided by the firm: education, bar admissions and practice focus.]',
+        'Our firm helps individuals and families across the Los Angeles metropolitan area navigate immigration matters with compassion, precision and tenacity. Every case is treated with the personal attention it deserves.',
+        'Our attorney has held an active California license since 2010 and focuses her practice on immigration law, with additional experience in family law, administrative law and contracts. She works with clients directly in Spanish, as does our staff.',
       ],
       points: [
-        'Bilingual service (English / Spanish)',
-        'Transparent, flat-rate consultations',
-        'In-person and virtual meetings available',
+        'Spanish-speaking attorney and staff',
+        '15+ years licensed in California',
+        'Meet at our Commerce office or by video',
       ],
       cta: 'About the firm',
-      imageAlt: 'Attorney reviewing documents with a client at a desk',
+      imageAlt: 'Hands reviewing documents next to a laptop on a desk',
     },
     process: {
       title: 'How the process works',
       subtitle: 'A clear path from your first call to the next step in your case.',
       steps: [
         { title: 'Contact us', body: 'Call, email, or send the short form. Tell us briefly what kind of matter you need help with.' },
-        { title: 'Consultation', body: 'Meet with the attorney in person or by video to discuss your situation and questions.' },
+        { title: 'Consultation', body: 'Meet with the attorney at our Commerce office or by video to discuss your situation and questions.' },
         { title: 'Review your options', body: 'We explain the options that may be available to you, the likely steps, and what documents are needed.' },
         { title: 'Move forward', body: 'If you decide to work with us, we prepare, file, and follow up while keeping you informed.' },
       ],
@@ -133,17 +141,17 @@ const en = {
       items: [
         { title: 'Bilingual communication', body: 'Every conversation and document explanation is available in English or Spanish.' },
         { title: 'Careful preparation', body: 'Forms, evidence and filings are reviewed in detail before submission to reduce errors and delays.' },
-        { title: 'Flexible meetings', body: 'Choose an in-person meeting at our office or a secure video consultation.' },
+        { title: 'Flexible meetings', body: 'Visit us in Commerce, minutes from downtown Los Angeles, or meet with us from home by secure video call.' },
         { title: 'Honest guidance', body: 'We tell you what to expect, including the risks, so you can make informed decisions.' },
       ],
     },
     gallery: {
-      title: 'Our Space & Team',
-      subtitle: 'A welcoming office and a team ready to help.',
+      title: 'Our Commitment',
+      subtitle: 'Personal attention, careful preparation and clear communication at every step.',
       slides: [
-        { caption: 'Our team, by your side.', alt: 'Two professionals shaking hands across a desk' },
-        { caption: 'A welcoming space for every client.', alt: 'Bright office meeting room with a table and chairs' },
-        { caption: 'Guidance you can trust.', alt: 'Person signing documents at a desk' },
+        { caption: 'With you at every step.', alt: 'Two people shaking hands across a desk' },
+        { caption: 'A clear, organized process.', alt: 'Bright meeting room with a table and chairs' },
+        { caption: 'Every document, carefully reviewed.', alt: 'Person signing documents at a desk' },
       ],
       previous: 'Previous slide',
       next: 'Next slide',
@@ -151,37 +159,26 @@ const en = {
       play: 'Play slideshow',
       slideOf: 'Slide {n} of {total}',
     },
-    testimonials: {
-      title: 'What clients say',
-      /* TODO(attorney): replace with real, permission-granted client testimonials or remove this section.
-         Many state bar rules restrict testimonials in attorney advertising. */
-      items: [
-        { name: 'Maria G.', quote: 'They handled my work permit case with patience and clarity. I always knew what was happening.' },
-        { name: 'David K.', quote: 'Professional and human. They treated my case like it mattered — because to me, it does.' },
-        { name: 'Aisha R.', quote: 'Booking, consultations, follow-ups — everything was easy. Highly recommend.' },
-      ],
-      note: 'Testimonials reflect individual experiences. Results depend on the facts of each case and are not guaranteed.',
-    },
     faq: {
       title: 'Common questions',
       subtitle: 'Quick answers before you reach out.',
       viewAll: 'See all FAQs',
     },
     cta: {
-      title: 'Ready to take the first step?',
+      title: 'Schedule your consultation',
       body: 'Request a consultation in English or Spanish. We will contact you to confirm a time.',
       button: 'Schedule a Consultation',
     },
     contact: {
       title: 'Contact',
-      subtitle: 'Reach out by phone or email, or send us a short message.',
+      subtitle: 'Call us or visit our office in Commerce. We serve clients throughout the Los Angeles metropolitan area.',
     },
   },
 
   about: {
     title: 'About the Firm',
     intro:
-      'We are an immigration law office dedicated to helping individuals and families understand their options and move forward with confidence.',
+      'FarFan Law Firm is an immigration law firm in Commerce, California, dedicated to helping individuals and families across the Los Angeles metropolitan area understand their options and move forward with confidence.',
     sections: [
       {
         heading: 'Our approach',
@@ -192,8 +189,10 @@ const en = {
       },
       {
         heading: 'Our attorney',
-        /* TODO(attorney): replace with real biography and credentials. */
-        body: ['[Attorney biography pending — to be provided by the firm: education, bar admissions, professional memberships and practice focus.]'],
+        body: [
+          'Our attorney has held an active license with the State Bar of California since 2010. Her practice focuses on immigration law, with additional experience in family law, administrative law and contracts.',
+          'She speaks Spanish with her clients, as does our staff, so every explanation, document and conversation is clear from day one.',
+        ],
       },
       {
         heading: 'What to expect',
@@ -256,6 +255,10 @@ const en = {
       a: 'Yes. Consultations are available in person at our office or by video call, depending on your preference.',
     },
     {
+      q: 'Where is your office?',
+      a: 'Our office is at 5800 S Eastern Ave, Suite 500, Commerce, CA 90040. We serve clients throughout the Los Angeles metropolitan area, in person or by video.',
+    },
+    {
       q: 'What should I bring to my consultation?',
       a: 'Bring identity documents, any notices or letters from immigration agencies or the court, and copies of anything you have filed before. Our Resources page has a full checklist.',
     },
@@ -272,9 +275,10 @@ const en = {
   contactPage: {
     title: 'Contact Us',
     intro:
-      'Tell us briefly how we can help and we will contact you to schedule a consultation. You can also call or email us directly.',
+      'Tell us briefly how we can help and we will contact you to schedule a consultation. You can also call us directly at (213) 221-5099.',
     officeHeading: 'Office information',
     formHeading: 'Request a consultation',
+    mapHeading: 'How to get to our office',
   },
 
   form: {
@@ -307,6 +311,7 @@ const en = {
       messageTooLong: 'Please keep your message under {max} characters.',
       consentRequired: 'Please confirm that you have read the notice above.',
       server: 'We could not send your request. Please try again or call us.',
+      rateLimited: 'We received several requests from your connection. Please wait a few minutes and try again, or call us at (213) 221-5099.',
     },
     disclaimerTitle: 'Important notice',
     /* TODO(attorney): review and finalize this wording. */
